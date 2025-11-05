@@ -1,189 +1,189 @@
-# PDF Editor - 全栈 PDF 编辑应用
+# PDF Editor - Full-Stack PDF Editing Application
 
-一个现代化的 PDF 编辑器，支持文本添加、图片插入、页面管理等功能。
+A modern PDF editor with text insertion, image placement, page management, and more.
 
-## 技术栈
+## Tech Stack
 
-### 后端
-- **FastAPI** - 高性能 Python Web 框架
-- **PyMuPDF (fitz)** - PDF 处理库
-- **Uvicorn** - ASGI 服务器
+### Backend
+- **FastAPI** - High-performance Python web framework
+- **PyMuPDF (fitz)** - PDF processing library
+- **Uvicorn** - ASGI server
 
-### 前端
-- **Next.js 15** - React 框架
-- **TypeScript** - 类型安全
-- **Tailwind CSS** - 样式框架
-- **PDF.js** - PDF 预览
+### Frontend
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling framework
+- **PDF.js** - PDF preview
 
 ---
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 方法 1: 使用启动脚本（推荐）
+### Method 1: Using Startup Script (Recommended)
 
 ```bash
-# 全栈启动（后端 + 前端）
+# Start full stack (backend + frontend)
 ./start_dev.sh
 
-# 或单独启动后端
+# Or start backend only
 ./scripts/start_backend.sh
 ```
 
-### 方法 2: 手动启动
+### Method 2: Manual Start
 
-**启动后端**:
+**Start Backend**:
 ```bash
 cd "/Users/xtom/Downloads/A2 3/pdf"
 source .venv/bin/activate
 python -m uvicorn scripts.pdf_api:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-**启动前端**:
+**Start Frontend**:
 ```bash
 cd pdf-editor
-npm install  # 首次运行
+npm install  # First time only
 npm run dev
 ```
 
-详细启动指南请查看 [START_GUIDE.md](START_GUIDE.md)
+For detailed startup instructions, see [START_GUIDE.md](START_GUIDE.md)
 
 ---
 
-## 📋 功能特性
+## 📋 Features
 
-### PDF 编辑功能
-- ✅ 添加文本（支持字体大小、颜色、位置自定义）
-- ✅ 插入图片（支持尺寸调整）
-- ✅ 删除页面
-- ✅ 重排页面
-- ✅ 合并 PDF
-- ✅ 提取页面
-- ✅ 文本遮盖
-- ✅ PDF 信息查询
+### PDF Editing Features
+- ✅ Add text (customizable font size, color, position)
+- ✅ Insert images (with size adjustment)
+- ✅ Delete pages
+- ✅ Reorder pages
+- ✅ Merge PDFs
+- ✅ Extract pages
+- ✅ Redact text
+- ✅ Get PDF information
 
-### 系统特性
-- ✅ 实时 PDF 预览
-- ✅ 自动文件清理（24 小时过期）
-- ✅ 统一的错误处理
-- ✅ 类型安全（TypeScript）
-- ✅ 响应式设计
-- ✅ 本地存储/Supabase 存储
-
----
-
-## 🌐 访问地址
-
-### 开发环境
-- **前端**: http://localhost:3000
-- **后端 API**: http://localhost:8000
-- **API 文档**: http://localhost:8000/docs
-- **健康检查**: http://localhost:8000/healthz
+### System Features
+- ✅ Real-time PDF preview
+- ✅ Automatic file cleanup (24-hour expiration)
+- ✅ Unified error handling
+- ✅ Type safety (TypeScript)
+- ✅ Responsive design
+- ✅ Local storage / Supabase storage
 
 ---
 
-## 📁 项目结构
+## 🌐 Access URLs
+
+### Development Environment
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **API Documentation**: http://localhost:8000/docs
+- **Health Check**: http://localhost:8000/healthz
+
+---
+
+## 📁 Project Structure
 
 ```
 pdf/
 ├── scripts/
-│   ├── pdf_api.py           # FastAPI 服务入口
-│   ├── start_backend.sh     # 后端启动脚本
-│   └── cleanup-cron.ts      # 清理定时任务
-├── pdf_processor.py         # PDF 处理核心
-├── .venv/                   # Python 虚拟环境
-├── pdf-editor/              # Next.js 前端
+│   ├── pdf_api.py           # FastAPI service entry point
+│   ├── start_backend.sh     # Backend startup script
+│   └── cleanup-cron.ts      # Cleanup scheduled task
+├── pdf_processor.py         # PDF processing core
+├── .venv/                   # Python virtual environment
+├── pdf-editor/              # Next.js frontend
 │   ├── app/
 │   │   ├── api/             # API Routes
-│   │   ├── components/      # React 组件
-│   │   └── page.tsx         # 主页面
+│   │   ├── components/      # React components
+│   │   └── page.tsx         # Main page
 │   ├── lib/
-│   │   ├── api-utils.ts     # API 工具函数
-│   │   ├── pdf-api-client.ts    # API 客户端
-│   │   ├── pdf-operation-wrapper.ts  # PDF 操作包装器
-│   │   ├── python-bridge.ts  # Python 服务桥接
-│   │   └── supabase.ts      # Supabase 客户端
+│   │   ├── api-utils.ts     # API utilities
+│   │   ├── pdf-api-client.ts    # API client
+│   │   ├── pdf-operation-wrapper.ts  # PDF operation wrapper
+│   │   ├── python-bridge.ts  # Python service bridge
+│   │   └── supabase.ts      # Supabase client
 │   ├── hooks/
-│   │   ├── usePdfEditor.ts  # PDF 编辑器 Hook
-│   │   └── useToast.ts      # Toast 通知 Hook
+│   │   ├── usePdfEditor.ts  # PDF editor hook
+│   │   └── useToast.ts      # Toast notification hook
 │   └── types/
-│       ├── pdf.ts           # PDF 类型定义
-│       └── api.ts           # API 类型定义
-├── START_GUIDE.md           # 启动指南
-├── DEPLOYMENT.md            # 部署指南
-├── OPTIMIZATION_SUMMARY.md  # 优化总结
-└── README.md                # 本文件
+│       ├── pdf.ts           # PDF type definitions
+│       └── api.ts           # API type definitions
+├── START_GUIDE.md           # Startup guide
+├── DEPLOYMENT.md            # Deployment guide
+├── OPTIMIZATION_SUMMARY.md  # Optimization summary
+└── README.md                # This file
 ```
 
 ---
 
-## 🔧 环境配置
+## 🔧 Environment Configuration
 
-### 后端
-无需额外配置，使用默认设置即可。
+### Backend
+No additional configuration needed. Use default settings.
 
-### 前端
+### Frontend
 
-创建 `pdf-editor/.env.local`:
+Create `pdf-editor/.env.local`:
 
 ```bash
-# FastAPI 服务地址（必需）
+# FastAPI service URL (required)
 PDF_API_BASE_URL=http://localhost:8000
 
-# Supabase 配置（可选，默认使用本地存储）
+# Supabase configuration (optional, defaults to local storage)
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 ---
 
-## 🛠️ 开发
+## 🛠️ Development
 
-### 后端开发
+### Backend Development
 ```bash
-# 激活虚拟环境
+# Activate virtual environment
 source .venv/bin/activate
 
-# 安装新依赖
+# Install new dependencies
 pip install <package>
 
-# 运行测试
-python -m pytest  # 如果有测试
+# Run tests
+python -m pytest  # If tests exist
 
-# 查看 API 文档
+# View API documentation
 open http://localhost:8000/docs
 ```
 
-### 前端开发
+### Frontend Development
 ```bash
 cd pdf-editor
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start development server
 npm run dev
 
-# 类型检查
+# Type checking
 npm run build
 
-# 代码检查
+# Linting
 npm run lint
 ```
 
 ---
 
-## 📦 依赖管理
+## 📦 Dependency Management
 
-### Python 依赖
+### Python Dependencies
 ```bash
-# 查看已安装包
+# List installed packages
 pip list
 
-# 安装所有依赖
+# Install all dependencies
 pip install fastapi uvicorn pymupdf python-multipart
 ```
 
-### Node.js 依赖
+### Node.js Dependencies
 ```bash
 cd pdf-editor
 npm install
@@ -191,70 +191,70 @@ npm install
 
 ---
 
-## 🚢 部署
+## 🚢 Deployment
 
-详细部署指南请查看 [DEPLOYMENT.md](DEPLOYMENT.md)
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)
 
-### 关键步骤
-1. 部署 FastAPI 后端（Docker/VPS/Cloud Run）
-2. 配置 `PDF_API_BASE_URL` 环境变量
-3. 部署 Next.js 前端（Vercel/Netlify）
-4. 配置 Supabase 存储（可选）
+### Key Steps
+1. Deploy FastAPI backend (Docker/VPS/Cloud Run)
+2. Configure `PDF_API_BASE_URL` environment variable
+3. Deploy Next.js frontend (Vercel/Netlify)
+4. Configure Supabase storage (optional)
 
 ---
 
-## 🧹 维护
+## 🧹 Maintenance
 
-### 文件清理
+### File Cleanup
 
-**自动清理**（推荐）:
+**Automatic Cleanup** (Recommended):
 ```bash
-# 添加到 crontab
+# Add to crontab
 0 * * * * cd /path/to/pdf-editor && npx tsx scripts/cleanup-cron.ts
 ```
 
-**手动清理**:
+**Manual Cleanup**:
 ```bash
-# 通过 API
+# Via API
 curl -X POST http://localhost:3000/api/pdf/cleanup
 
-# 或使用脚本
+# Or using script
 npx tsx pdf-editor/scripts/cleanup-cron.ts
 ```
 
 ---
 
-## 📚 文档
+## 📚 Documentation
 
-- [START_GUIDE.md](START_GUIDE.md) - 详细启动指南
-- [DEPLOYMENT.md](DEPLOYMENT.md) - 部署指南
-- [OPTIMIZATION_SUMMARY.md](OPTIMIZATION_SUMMARY.md) - 代码优化总结
+- [START_GUIDE.md](START_GUIDE.md) - Detailed startup guide
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Deployment guide
+- [OPTIMIZATION_SUMMARY.md](OPTIMIZATION_SUMMARY.md) - Code optimization summary
 
 ---
 
-## 🐛 故障排除
+## 🐛 Troubleshooting
 
-### 后端问题
+### Backend Issues
 
-**问题**: 模块未找到
+**Issue**: Module not found
 ```bash
 source .venv/bin/activate
 pip install fastapi uvicorn pymupdf python-multipart
 ```
 
-**问题**: 端口被占用
+**Issue**: Port already in use
 ```bash
 lsof -i :8000
 kill -9 <PID>
 ```
 
-### 前端问题
+### Frontend Issues
 
-**问题**: PDF 服务不可用
-- 检查后端是否运行: http://localhost:8000/healthz
-- 检查 `.env.local` 配置
+**Issue**: PDF service unavailable
+- Check if backend is running: http://localhost:8000/healthz
+- Check `.env.local` configuration
 
-**问题**: 依赖安装失败
+**Issue**: Dependency installation failed
 ```bash
 rm -rf node_modules package-lock.json
 npm install
@@ -268,15 +268,15 @@ MIT License
 
 ---
 
-## 👥 贡献
+## 👥 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
 ---
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- [FastAPI](https://fastapi.tiangolo.com/) - 现代化的 Python Web 框架
-- [PyMuPDF](https://pymupdf.readthedocs.io/) - 强大的 PDF 处理库
-- [Next.js](https://nextjs.org/) - React 框架
-- [PDF.js](https://mozilla.github.io/pdf.js/) - PDF 渲染引擎
+- [FastAPI](https://fastapi.tiangolo.com/) - Modern Python web framework
+- [PyMuPDF](https://pymupdf.readthedocs.io/) - Powerful PDF processing library
+- [Next.js](https://nextjs.org/) - React framework
+- [PDF.js](https://mozilla.github.io/pdf.js/) - PDF rendering engine
